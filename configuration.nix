@@ -9,6 +9,8 @@
         fzf
         gh
         python3
+        pnpm
+        rustup
         htop
         wget
         jq
