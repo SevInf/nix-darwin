@@ -89,7 +89,10 @@
                     plugin = resurrect;
                 }
                 {
-                    plugin = better-mouse-mode;
+                    plugin = yank;
+                    extraConfig = ''
+                    set -g @yank_action 'copy-pipe'
+                    '';
                 }
             ];
         };
