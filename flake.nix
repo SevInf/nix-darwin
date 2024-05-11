@@ -12,7 +12,7 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
 
   {
-    darwinConfigurations."Serhiis-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations.mac-intel = nix-darwin.lib.darwinSystem {
       system = "x86_64-darwin";
       modules = [ 
         ./configuration.nix
@@ -25,6 +25,8 @@
             
             users.sevinf = import ./home.nix;
           };
+          
+          nixpkgs.hostPlatform = "x86_64-darwin";
         }
       ];
       specialArgs = { inherit inputs; };

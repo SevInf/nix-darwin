@@ -39,7 +39,6 @@
         pkgs.fira-code-nerdfont
     ];
 
-    nixpkgs.hostPlatform = "x86_64-darwin";
 
     environment = {
         shells = [
