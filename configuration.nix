@@ -15,8 +15,9 @@
         jq
         tmux
         fd
-        delta
-        zoxide
+        bat
+        eza
+        ripgrep
     ];
 
     # Auto upgrade nix package and the daemon service.
