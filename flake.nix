@@ -11,26 +11,25 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
 
-  {
-    darwinConfigurations.mac-intel = nix-darwin.lib.darwinSystem {
-      system = "x86_64-darwin";
-      modules = [ 
-        ./configuration.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
+    {
+      darwinConfigurations.mac-intel = nix-darwin.lib.darwinSystem {
+        system = "x86_64-darwin";
+        modules = [
+          ./configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
 
-            
-            users.sevinf = import ./home.nix;
-          };
-          
-          nixpkgs.hostPlatform = "x86_64-darwin";
-        }
-      ];
-      specialArgs = { inherit inputs; };
+              users.sevinf = import ./home.nix;
+            };
+
+            nixpkgs.hostPlatform = "x86_64-darwin";
+          }
+        ];
+        specialArgs = { inherit inputs; };
+      };
+
     };
-
-  };
 }

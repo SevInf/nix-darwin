@@ -1,100 +1,83 @@
-{ config, pkgs, inputs, ... }: 
+{ config, pkgs, inputs, ... }:
 
 {
-    environment.systemPackages =
-    with pkgs; [ 
-        vim
-        neovim
-        git
-        fzf
-        gh
-        python3
-        rustup
-        htop
-        wget
-        jq
-        tmux
-        fd
-        bat
-        eza
-        ripgrep
-    ];
+  environment.systemPackages = with pkgs; [
+    vim
+    neovim
+    git
+    fzf
+    gh
+    python3
+    rustup
+    htop
+    wget
+    jq
+    tmux
+    fd
+    bat
+    eza
+    ripgrep
+    nixfmt
+  ];
 
-    # Auto upgrade nix package and the daemon service.
-    services.nix-daemon.enable = true;
-    nix.package = pkgs.nix;
+  # Auto upgrade nix package and the daemon service.
+  services.nix-daemon.enable = true;
+  nix.package = pkgs.nix;
 
-    nix.settings.experimental-features = "nix-command flakes";
+  nix.settings.experimental-features = "nix-command flakes";
 
-    programs.zsh.enable = true;
+  programs.zsh.enable = true;
 
-    system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
+  system.configurationRevision =
+    inputs.self.rev or inputs.self.dirtyRev or null;
 
-    # Used for backwards compatibility, please read the changelog before changing.
-    # $ darwin-rebuild changelog
-    system.stateVersion = 4;
+  # Used for backwards compatibility, please read the changelog before changing.
+  # $ darwin-rebuild changelog
+  system.stateVersion = 4;
 
-    fonts.fontDir.enable = true;
-    fonts.fonts = [
-        pkgs.fira-code
-        pkgs.fira-code-nerdfont
-    ];
+  fonts.fontDir.enable = true;
+  fonts.fonts = [ pkgs.fira-code pkgs.fira-code-nerdfont ];
 
+  environment = { shells = [ pkgs.zsh ]; };
 
-    environment = {
-        shells = [
-            pkgs.zsh
-        ];
+  homebrew = {
+    enable = true;
+    casks = [ "google-chrome" "iterm2" "visual-studio-code" ];
+
+    masApps = {
+      "Telegram" = 747648890;
+      "The Unarchiver" = 425424353;
+      "Xcode" = 497799835;
+      "DaisyDisk" = 411643860;
+    };
+  };
+
+  system.defaults = {
+    dock = {
+      orientation = "left";
+      show-recents = false;
     };
 
-    homebrew = {
-        enable = true;
-        casks = [
-            "google-chrome"
-            "iterm2"
-            "visual-studio-code"
-        ];
-
-        masApps = {
-            "Telegram" = 747648890;
-            "The Unarchiver" = 425424353;
-            "Xcode" = 497799835;
-            "DaisyDisk" = 411643860; 
-        };
+    finder = {
+      AppleShowAllExtensions = true;
+      AppleShowAllFiles = true;
+      FXEnableExtensionChangeWarning = false;
     };
 
-    system.defaults = {
-        dock = {
-            orientation = "left";
-            show-recents = false;
-        };
+    screencapture = { type = "png"; };
 
-        finder = {
-            AppleShowAllExtensions = true;
-            AppleShowAllFiles = true;
-            FXEnableExtensionChangeWarning = false;
-        };
+    trackpad = { TrackpadRightClick = true; };
 
-        screencapture = {
-            type = "png";
-        };
+    NSGlobalDomain = { AppleInterfaceStyle = "Dark"; };
+  };
 
-        trackpad = {
-            TrackpadRightClick = true;
-        };
+  security.pam.enableSudoTouchIdAuth = true;
 
-        NSGlobalDomain = {
-            AppleInterfaceStyle = "Dark";
-        };
-    };
-
-    security.pam.enableSudoTouchIdAuth = true;
-
-    users.users.sevinf = {
-        name = "sevinf";
-        home = "/Users/sevinf";
-        description = "Serhii Tatarintsev";
-        shell = pkgs.zsh;
-    };
+  users.users.sevinf = {
+    name = "sevinf";
+    home = "/Users/sevinf";
+    description = "Serhii Tatarintsev";
+    shell = pkgs.zsh;
+  };
 
 }
