@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -17,7 +17,8 @@
     bat
     eza
     ripgrep
-    nixfmt
+    nixpkgs-fmt
+    nil
   ];
 
   # Auto upgrade nix package and the daemon service.
