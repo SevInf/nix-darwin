@@ -34,6 +34,11 @@
             historySubstringSearch = { enable = true; };
         };
 
+        fzf = {
+            enable = true;
+            defaultCommand = "fd --type file";
+        };
+
         zoxide = { enable = true; };
         direnv = { enable = true; };
 
