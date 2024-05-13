@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+FLAKE="mac-intel"
+
+if [[ "$(uname -m)" == 'arm64' ]]; then
+  FLAKE="mac-arm"
+fi
+
+nix run \
+    --extra-experimental-features 'nix-command flakes' \
+    nix-darwin -- switch --flake "$HOME/.config/nix-darwin#$FLAKE"

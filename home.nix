@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   home = {
@@ -15,6 +15,10 @@
     };
 
     shellAliases = { ls = "ls -G"; };
+
+    sessionPath = [
+      "${./bin}"
+    ];
   };
 
   imports = [

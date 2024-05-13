@@ -11,24 +11,18 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
 
+    let
+      mkMacSystem = import ./lib/mkMacSystem.nix {
+        inherit inputs;
+      };
+    in
     {
-      darwinConfigurations.mac-intel = nix-darwin.lib.darwinSystem {
+      darwinConfigurations.mac-intel = mkMacSystem {
         system = "x86_64-darwin";
-        modules = [
-          ./configuration.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
+      };
 
-              users.sevinf = import ./home.nix;
-            };
-
-            nixpkgs.hostPlatform = "x86_64-darwin";
-          }
-        ];
-        specialArgs = { inherit inputs; };
+      darwinConfigurations.mac-arm = mkMacSystem {
+        system = "aarch64-darwin";
       };
 
     };
