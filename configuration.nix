@@ -77,7 +77,16 @@
 
     trackpad = { TrackpadRightClick = true; };
 
-    NSGlobalDomain = { AppleInterfaceStyle = "Dark"; };
+    NSGlobalDomain = { 
+      AppleInterfaceStyle = "Dark";
+      NSAutomaticSpellingCorrectionEnabled = false;
+    };
+
+    CustomSystemPreferences = {
+      NSGlobalDomain = {
+        TISRomanSwitchState = 1;
+      };
+    };
   };
 
   security.pam.enableSudoTouchIdAuth = true;
