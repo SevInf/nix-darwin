@@ -41,7 +41,7 @@
 
   homebrew = {
     enable = true;
-    casks = [ "google-chrome" "iterm2" "visual-studio-code" ];
+    casks = [ "google-chrome" "iterm2" "visual-studio-code" "whatsapp" ];
 
     masApps = {
       "Telegram" = 747648890;
@@ -55,6 +55,16 @@
     dock = {
       orientation = "left";
       show-recents = false;
+      persistent-apps = [
+        "/System/Applications/Calendar.app"
+        "/System/Applications/Mail.app"
+        "/Applications/Google Chrome.app"
+        "/Applications/Telegram.app"
+        "/Applications/WhatsApp.app"
+        "/Applications/iTerm.app"
+        "/System/Applications/Music.app"
+        "/System/Applications/Reminders.app"
+      ];
     };
 
     finder = {
