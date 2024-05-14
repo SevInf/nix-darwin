@@ -7,6 +7,7 @@
     userEmail = "sergey@tatarintsev.me";
     difftastic.enable = true;
     aliases = {
+      fpush = "push --force";
       amend = "commit -a --amend --no-edit";
       log-mine = "!sh -c 'git log --author \"$(git config --get user.name)\"'";
     };
