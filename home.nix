@@ -1,10 +1,15 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   home = {
     username = "sevinf";
     homeDirectory = "/Users/sevinf";
     stateVersion = "23.11";
+
+    packages = with pkgs; [
+      nodejs
+      nodePackages.pnpm
+    ];
 
     sessionVariables = {
       EDITOR = "nvim";
