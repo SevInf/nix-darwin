@@ -17,6 +17,7 @@
         default = "simple";
         autoSetupRemote = true;
       };
+      rebase.autostash = true;
       color.ui = true;
       merge.conflictstyle = "zdiff3";
       branch.autosetuprebase = "always";
