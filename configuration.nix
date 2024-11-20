@@ -34,14 +34,13 @@
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
 
-  fonts.fontDir.enable = true;
-  fonts.fonts = [ pkgs.fira-code pkgs.fira-code-nerdfont ];
+  fonts.packages = [ pkgs.fira-code pkgs.fira-code-nerdfont ];
 
   environment = { shells = [ pkgs.zsh ]; };
 
   homebrew = {
     enable = true;
-    casks = [ "google-chrome" "iterm2" "visual-studio-code" "whatsapp" ];
+    casks = [ "google-chrome" "iterm2" "visual-studio-code" "whatsapp" "1password" "slack" ];
 
     masApps = {
       "Telegram" = 747648890;
