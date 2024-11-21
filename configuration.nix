@@ -47,6 +47,7 @@
       "1password"
       "slack"
       "ghostty"
+      "orbstack"
     ];
 
     masApps = {
