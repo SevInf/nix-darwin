@@ -40,7 +40,14 @@
 
   homebrew = {
     enable = true;
-    casks = [ "google-chrome" "iterm2" "visual-studio-code" "whatsapp" "1password" "slack" ];
+    casks = [
+      "vivaldi"
+      "visual-studio-code"
+      "whatsapp"
+      "1password"
+      "slack"
+      "ghostty"
+    ];
 
     masApps = {
       "Telegram" = 747648890;
@@ -57,10 +64,10 @@
       persistent-apps = [
         "/System/Applications/Calendar.app"
         "/System/Applications/Mail.app"
-        "/Applications/Google Chrome.app"
+        "/Applications/Vivaldi.app"
         "/Applications/Telegram.app"
         "/Applications/WhatsApp.app"
-        "/Applications/iTerm.app"
+        "/Applications/Ghostty.app"
         "/System/Applications/Music.app"
         "/System/Applications/Reminders.app"
       ];
@@ -76,7 +83,7 @@
 
     trackpad = { TrackpadRightClick = true; };
 
-    NSGlobalDomain = { 
+    NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
       NSAutomaticSpellingCorrectionEnabled = false;
     };

@@ -26,6 +26,10 @@
     ];
   };
 
+  xdg = {
+    configFile."ghostty/config".source = ./programs/ghostty;
+  };
+
   imports = [
     ./programs/git.nix
     ./programs/neovim.nix
