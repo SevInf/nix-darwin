@@ -23,6 +23,7 @@
 
     sessionPath = [
       "${./bin}"
+      "/opt/homebrew/bin"
     ];
   };
 
