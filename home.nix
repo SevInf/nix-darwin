@@ -27,16 +27,13 @@
     ];
   };
 
-  xdg = {
-    configFile."ghostty/config".source = ./programs/ghostty;
-  };
-
   imports = [
     ./programs/git.nix
     ./programs/neovim.nix
     ./programs/starship.nix
     ./programs/tmux.nix
     ./programs/zsh.nix
+    ./programs/ghostty.nix
   ];
 
   programs = {

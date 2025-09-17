@@ -19,22 +19,29 @@
     nil
   ];
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  # The default Nix build user group ID was changed from 30000 to 350.
+  # You are currently managing Nix build users with nix-darwin, but your
+  # nixbld group has GID 350, whereas we expected 30000.
+  # We do not recommend trying to change the group ID with macOS user
+  # management tools without a complete uninstallation and reinstallation
+  # of Nix.
+  ids.gids.nixbld = 350;
+
   nix.package = pkgs.nix;
 
   nix.settings.experimental-features = "nix-command flakes";
 
   programs.zsh.enable = true;
 
-  system.configurationRevision =
-    inputs.self.rev or inputs.self.dirtyRev or null;
+  system = {
+    primaryUser = "sevinf";
+    configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
+    # Used for backwards compatibility, please read the changelog before changing.
+    # $ darwin-rebuild changelog
+    stateVersion = 4;
+  };
 
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 4;
-
-  fonts.packages = [ pkgs.fira-code pkgs.fira-code-nerdfont ];
+  fonts.packages = [ pkgs.fira-code pkgs.nerd-fonts.fira-code ];
 
   environment = { shells = [ pkgs.zsh ]; };
 
@@ -96,7 +103,7 @@
     };
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   users.users.sevinf = {
     name = "sevinf";

@@ -25,6 +25,7 @@
       rerere.enabled = true;
       pull.rebase = true;
       diff.algorithm = "histogram";
+      safe.directory = "${./..}";
     };
     ignores = [
       ".DS_Store"

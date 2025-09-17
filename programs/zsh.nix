@@ -4,7 +4,7 @@
   programs.zsh = {
     enable = true;
     defaultKeymap = "viins";
-    initExtra = ''
+    initContent = ''
       KEYTIMEOUT=5
       autoload -U colors
       zstyle ':completion:*' menu select
