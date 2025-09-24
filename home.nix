@@ -1,14 +1,17 @@
 { pkgs, ... }:
-
+let
+  username = "sevinf";
+  homeDirectory = "/Users/${username}";
+  pnpmHome = "${homeDirectory}/Library/pnpm";
+in
 {
   home = {
-    username = "sevinf";
-    homeDirectory = "/Users/sevinf";
+    inherit username homeDirectory;
     stateVersion = "23.11";
 
     packages = with pkgs; [
       nodejs
-      nodePackages.pnpm
+      pnpm
     ];
 
     sessionVariables = {
@@ -17,6 +20,7 @@
       LS_COLORS =
         "di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43";
       CLICOLORS = "1";
+      PNPM_HOME = pnpmHome;
     };
 
     shellAliases = { ls = "ls -G"; };
@@ -24,6 +28,7 @@
     sessionPath = [
       "${./bin}"
       "/opt/homebrew/bin"
+      "${pnpmHome}"
     ];
   };
 
