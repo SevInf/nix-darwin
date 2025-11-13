@@ -51,5 +51,6 @@ in
 
     zoxide = { enable = true; };
     direnv = { enable = true; };
+    mergiraf = { enable = true; };
   };
 }
