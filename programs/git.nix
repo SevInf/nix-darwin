@@ -3,16 +3,16 @@
 {
   programs.git = {
     enable = true;
-    userName = "Serhii Tatarintsev";
-    userEmail = "sergey@tatarintsev.me";
-    difftastic.enable = true;
-    aliases = {
-      fpush = "push --force";
-      amend = "commit -a --amend --no-edit";
-      log-mine = "!sh -c 'git log --author \"$(git config --get user.name)\"'";
-    };
-
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Serhii Tatarintsev";
+        email = "sergey@tatarintsev.me";
+      };
+      alias = {
+        fpush = "push --force-with-lease";
+        amend = "commit -a --amend --no-edit";
+        log-mine = "!sh -c 'git log --author \"$(git config --get user.name)\"'";
+      };
       push = {
         default = "simple";
         autoSetupRemote = true;
@@ -27,6 +27,7 @@
       diff.algorithm = "histogram";
       safe.directory = "${./..}";
     };
+
     ignores = [
       ".DS_Store"
       ".AppleDouble"

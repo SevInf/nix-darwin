@@ -27,6 +27,7 @@
   # of Nix.
   ids.gids.nixbld = 350;
 
+  nix.enable = false;
   nix.package = pkgs.nix;
 
   nix.settings.experimental-features = "nix-command flakes";

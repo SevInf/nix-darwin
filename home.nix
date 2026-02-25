@@ -10,7 +10,7 @@ in
     stateVersion = "23.11";
 
     packages = with pkgs; [
-      nodejs
+      nodejs_24
       pnpm
     ];
 
