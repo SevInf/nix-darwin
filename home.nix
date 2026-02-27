@@ -3,6 +3,7 @@ let
   username = "sevinf";
   homeDirectory = "/Users/${username}";
   pnpmHome = "${homeDirectory}/Library/pnpm";
+  localBin = "${homeDirectory}/.local/bin";
 in
 {
   home = {
@@ -29,6 +30,7 @@ in
       "${./bin}"
       "/opt/homebrew/bin"
       "${pnpmHome}"
+      "${localBin}"
     ];
   };
 
