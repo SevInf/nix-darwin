@@ -63,6 +63,7 @@
       "The Unarchiver" = 425424353;
       "Xcode" = 497799835;
       "DaisyDisk" = 411643860;
+      "MeetingBar" = 1532419400;
     };
   };
 
