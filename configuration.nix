@@ -42,16 +42,22 @@
     stateVersion = 4;
   };
 
-  fonts.packages = [ pkgs.fira-code pkgs.nerd-fonts.fira-code ];
+  fonts.packages = [
+    pkgs.fira-code
+    pkgs.nerd-fonts.fira-code
+  ];
 
-  environment = { shells = [ pkgs.zsh ]; };
+  environment = {
+    shells = [ pkgs.zsh ];
+  };
 
   homebrew = {
     enable = true;
     casks = [
-      "vivaldi"
-      "visual-studio-code"
+      "orion"
+      "zed"
       "whatsapp"
+      "signal"
       "1password"
       "slack"
       "ghostty"
@@ -63,7 +69,6 @@
       "The Unarchiver" = 425424353;
       "Xcode" = 497799835;
       "DaisyDisk" = 411643860;
-      "MeetingBar" = 1532419400;
     };
   };
 
@@ -74,8 +79,9 @@
       persistent-apps = [
         "/System/Applications/Calendar.app"
         "/System/Applications/Mail.app"
-        "/Applications/Vivaldi.app"
+        "/Applications/Orion.app"
         "/Applications/Telegram.app"
+        "/Applications/Signal.app"
         "/Applications/WhatsApp.app"
         "/Applications/Ghostty.app"
         "/System/Applications/Music.app"
@@ -89,9 +95,13 @@
       FXEnableExtensionChangeWarning = false;
     };
 
-    screencapture = { type = "png"; };
+    screencapture = {
+      type = "png";
+    };
 
-    trackpad = { TrackpadRightClick = true; };
+    trackpad = {
+      TrackpadRightClick = true;
+    };
 
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
