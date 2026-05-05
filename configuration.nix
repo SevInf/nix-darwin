@@ -54,7 +54,7 @@
   homebrew = {
     enable = true;
     casks = [
-      "orion"
+      "firefox"
       "zed"
       "whatsapp"
       "signal"
@@ -79,7 +79,7 @@
       persistent-apps = [
         "/System/Applications/Calendar.app"
         "/System/Applications/Mail.app"
-        "/Applications/Orion.app"
+        "/Applications/Firefox.app"
         "/Applications/Telegram.app"
         "/Applications/Signal.app"
         "/Applications/WhatsApp.app"
