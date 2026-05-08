@@ -55,6 +55,7 @@
     enable = true;
     casks = [
       "firefox"
+      "google-chrome"
       "zed"
       "whatsapp"
       "signal"
@@ -69,6 +70,7 @@
       "The Unarchiver" = 425424353;
       "Xcode" = 497799835;
       "DaisyDisk" = 411643860;
+      "Velja" = 1607635845;
     };
   };
 
