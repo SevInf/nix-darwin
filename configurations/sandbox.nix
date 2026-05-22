@@ -1,39 +1,38 @@
-{ lib, pkgs, ... }:
-
+{  pkgs, lib, ... }:
 {
-  system.stateVersion = "25.11";
+    users.users.sevinf = {
+      group = "sevinf";
+      uid = 1500;
+      isNormalUser = true;
+      home = "/home/sevinf";
+      shell = pkgs.zsh;
+    };
+    users.groups.sevinf = {};
 
-  users.users.sevinf = {
-    group = "sevinf";
-    isNormalUser = true;
-  };
+    services.lima.enable = true;
+    services.openssh.enable = true;
 
-  users.groups.sevinf = { };
+    security = {
+        sudo.wheelNeedsPassword = false;
+    };
 
-  services.lima.enable = true;
-  services.openssh.enable = true;
+    boot.loader.grub = {
+        device = "nodev";
+        efiSupport = true;
+        efiInstallAsRemovable = true;
+    };
+    fileSystems."/boot" = {
+        device = lib.mkForce "/dev/vda1";  # /dev/disk/by-label/ESP
+        fsType = "vfat";
+    };
+    fileSystems."/" = {
+        device = "/dev/disk/by-label/nixos";
+        autoResize = true;
+        fsType = "ext4";
+        options = [ "noatime" "nodiratime" "discard" ];
+    };
 
-  security = {
-    sudo.wheelNeedsPassword = false;
-  };
+    boot.kernelPackages = pkgs.linuxPackages_latest;
 
-
-  boot.loader.grub = {
-    device = "nodev";
-    efiSupport = true;
-    efiInstallAsRemovable = true;
-  };
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  fileSystems."/boot" = {
-    device = lib.mkForce "/dev/vda1"; # /dev/disk/by-label/ESP
-    fsType = "vfat";
-  };
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos";
-    autoResize = true;
-    fsType = "ext4";
-    options = [ "noatime" "nodiratime" "discard" ];
-  };
+    system.stateVersion = "25.11";
 }

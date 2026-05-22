@@ -49,7 +49,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
 
-              users.sevinf = import ./home.nix;
+              users.sevinf = ./home.nix;
             };
           }
         ];

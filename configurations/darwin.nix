@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 
 {
 
@@ -10,6 +10,14 @@
     stateVersion = 4;
   };
 
+  users.users.sevinf = {
+    name = "sevinf";
+    home = "/Users/sevinf";
+    description = "Serhii Tatarintsev";
+    shell = pkgs.zsh;
+  };
+
+
   # The default Nix build user group ID was changed from 30000 to 350.
   # You are currently managing Nix build users with nix-darwin, but your
   # nixbld group has GID 350, whereas we expected 30000.
@@ -19,6 +27,7 @@
   ids.gids.nixbld = 350;
 
 
+  nix.enable = false;
   homebrew = {
     enable = true;
     casks = [
