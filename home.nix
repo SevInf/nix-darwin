@@ -1,13 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
-  username = "sevinf";
-  homeDirectory = "/Users/${username}";
-  pnpmHome = "${homeDirectory}/Library/pnpm";
-  localBin = "${homeDirectory}/.local/bin";
+  pnpmHome = "${config.home.homeDirectory}/Library/pnpm";
+  localBin = "${config.home.homeDirectory}}/.local/bin";
 in
 {
   home = {
-    inherit username homeDirectory;
     stateVersion = "23.11";
 
     packages = with pkgs; [
