@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, unstable, ... }:
 
 {
 
@@ -16,6 +16,13 @@
     description = "Serhii Tatarintsev";
     shell = pkgs.zsh;
   };
+
+  environment.systemPackages = with pkgs; [
+    unstable.lima
+    nixpkgs-fmt
+    nil
+  ];
+
 
 
   # The default Nix build user group ID was changed from 30000 to 350.

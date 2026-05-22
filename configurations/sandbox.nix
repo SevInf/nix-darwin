@@ -9,6 +9,11 @@
     };
     users.groups.sevinf = {};
 
+    networking.hostName = "dev-sandbox";
+    environment.systemPackages = with pkgs; [
+      ghostty.terminfo
+    ];
+
     services.lima.enable = true;
     services.openssh.enable = true;
 

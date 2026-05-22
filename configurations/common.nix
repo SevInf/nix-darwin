@@ -1,4 +1,4 @@
-{ pkgs, unstable, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -15,9 +15,6 @@
     bat
     eza
     ripgrep
-    unstable.lima
-    nixpkgs-fmt
-    nil
   ];
 
 
