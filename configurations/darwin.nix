@@ -1,4 +1,8 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  ...
+}:
 
 {
 
@@ -19,11 +23,10 @@
 
   environment.systemPackages = with pkgs; [
     lima
+    mas
     nixpkgs-fmt
     nil
   ];
-
-
 
   # The default Nix build user group ID was changed from 30000 to 350.
   # You are currently managing Nix build users with nix-darwin, but your
@@ -32,7 +35,6 @@
   # management tools without a complete uninstallation and reinstallation
   # of Nix.
   ids.gids.nixbld = 350;
-
 
   nix.enable = false;
   homebrew = {
