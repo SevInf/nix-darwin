@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, unstable, lib, ... }:
 {
   users.users.sevinf = {
     group = "sevinf";
@@ -12,6 +12,7 @@
   networking.hostName = "dev-sandbox";
   environment.systemPackages = with pkgs; [
     ghostty.terminfo
+    unstable.claude-code
   ];
 
   services.lima.enable = true;

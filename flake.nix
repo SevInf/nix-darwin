@@ -59,6 +59,14 @@
             };
           }
         ];
+        specialArgs = {
+          inherit inputs;
+          unstable = import nixpkgs-unstable {
+            system = "aarch64-linux";
+            config.allowUnfree = true;
+          };
+        };
+
       };
     };
 
