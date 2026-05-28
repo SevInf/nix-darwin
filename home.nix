@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 let
   pnpmHome = "${config.home.homeDirectory}/Library/pnpm";
-  localBin = "${config.home.homeDirectory}}/.local/bin";
+  localBin = "${config.home.homeDirectory}/.local/bin";
 in
 {
   home = {
