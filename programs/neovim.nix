@@ -3,8 +3,10 @@
 {
   programs.neovim = {
     enable = true;
+    withRuby = false;
+    withPython3 = false;
 
-    extraLuaConfig = ''
+    initLua = ''
       vim.opt.number = true
       vim.opt.relativenumber = true
       vim.opt.tabstop = 4
@@ -48,6 +50,7 @@
       }
       {
         plugin = onedarkpro-nvim;
+        type = "viml";
         config = "colorscheme onedark";
       }
     ];

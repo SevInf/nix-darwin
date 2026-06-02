@@ -1,4 +1,4 @@
-{ inputs, pkgs, unstable, ... }:
+{ inputs, pkgs, ... }:
 
 {
 
@@ -7,7 +7,7 @@
     configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
-    stateVersion = 4;
+    stateVersion = 7;
   };
 
   users.users.sevinf = {
@@ -18,7 +18,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    unstable.lima
+    lima
     nixpkgs-fmt
     nil
   ];

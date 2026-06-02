@@ -5,7 +5,7 @@ let
 in
 {
   home = {
-    stateVersion = "23.11";
+    stateVersion = "26.05";
 
     packages = with pkgs; [
       nodejs_24
@@ -50,6 +50,9 @@ in
 
     zoxide = { enable = true; };
     direnv = { enable = true; };
-    mergiraf = { enable = true; };
+    mergiraf = {
+      enable = true;
+      enableGitIntegration = true;
+    };
   };
 }
