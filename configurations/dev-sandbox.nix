@@ -8,6 +8,7 @@
     shell = pkgs.zsh;
   };
   users.groups.sevinf = { };
+  programs.nix-ld.enable = true;
 
   networking.hostName = "dev-sandbox";
   environment.systemPackages = with pkgs; [
