@@ -17,7 +17,10 @@
         default = "simple";
         autoSetupRemote = true;
       };
-      rebase.autostash = true;
+      rebase = {
+        autostash = true;
+        autosquash = true;
+      };
       color.ui = true;
       merge.conflictstyle = "zdiff3";
       branch.autosetuprebase = "always";
@@ -26,6 +29,11 @@
       pull.rebase = true;
       diff.algorithm = "histogram";
       safe.directory = "${./..}";
+      url = {
+        "git@github.com:" = {
+          insteadOf = "https://github";
+        };
+      };
     };
 
     ignores = [
