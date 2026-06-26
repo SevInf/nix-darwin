@@ -15,6 +15,7 @@
     bat
     eza
     ripgrep
+    lsof
   ];
 
 

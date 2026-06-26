@@ -31,7 +31,7 @@
       safe.directory = "${./..}";
       url = {
         "git@github.com:" = {
-          insteadOf = "https://github";
+          insteadOf = "https://github.com";
         };
       };
     };
