@@ -1,12 +1,12 @@
-{ ... }:
+{ gitProfile, ... }:
 
 {
   programs.git = {
     enable = true;
     settings = {
       user = {
-        name = "Serhii Tatarintsev";
-        email = "sergey@tatarintsev.me";
+        name = gitProfile.name;
+        email = gitProfile.email;
       };
       alias = {
         fpush = "push --force-with-lease";
