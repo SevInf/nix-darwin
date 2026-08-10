@@ -10,10 +10,17 @@
   users.groups.sevinf = { };
   programs.nix-ld.enable = true;
 
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+
   networking.hostName = "dev-sandbox";
   environment.systemPackages = with pkgs; [
     ghostty.terminfo
     unstable.claude-code
+    unstable.pi-coding-agent
   ];
 
   services.lima.enable = true;
