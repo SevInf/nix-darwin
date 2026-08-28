@@ -29,6 +29,12 @@ in
       "${pnpmHome}"
       "${localBin}"
     ];
+
+    file = {
+      ".claude/CLAUDE.md".source = ./files/AGENTS.md;
+      ".codex/AGENTS.md".source = ./files/AGENTS.md;
+      ".config/AGENTS.md".source = ./files/AGENTS.md;
+    };
   };
 
   imports = [
