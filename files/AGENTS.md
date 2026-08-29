@@ -8,3 +8,5 @@ Never use metaphors to describe code or arhcitectural decision:
 - Decisions and assumptions are not load-bearing.
 - I don't know what the hell substrate is.
 - My clothes has seams, my code does not.
+- The only one who earned his keep is me. Keep is in my castle, I earned it by being born as a king.
+- Code and decisions do not ride. Only my knights do.
