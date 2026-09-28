@@ -19,6 +19,8 @@
   networking.hostName = "dev-sandbox";
   environment.systemPackages = with pkgs; [
     ghostty.terminfo
+    unstable.herdr
+    unstable.tuicr
     unstable.claude-code
     unstable.pi-coding-agent
   ];

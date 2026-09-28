@@ -2,11 +2,13 @@
 
 {
   programs.ghostty = {
+    enable = true;
+    package = null;
     enableZshIntegration = true;
     settings = {
       theme = "One Half Dark";
       font-family = "Fira Code Nerd Font Mono";
-      font-size = 14;
+      font-size = 16;
     };
   };
 }
