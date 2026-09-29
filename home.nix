@@ -34,6 +34,7 @@ in
       ".claude/CLAUDE.md".source = ./files/AGENTS.md;
       ".codex/AGENTS.md".source = ./files/AGENTS.md;
       ".config/AGENTS.md".source = ./files/AGENTS.md;
+      ".config/herdr/config.toml".source = ./files/herdr/config.toml;
       ".pi/agent/AGENTS.md".source = ./files/AGENTS.md;
       ".lima/_templates/dev-sandbox.yaml".source = ./files/lima/templates/dev-sandbox.yaml;
     };

@@ -3,6 +3,7 @@
 {
   programs.ghostty = {
     enable = true;
+    systemd.enable = false;
     package = null;
     enableZshIntegration = true;
     settings = {

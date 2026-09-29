@@ -1,0 +1,8 @@
+onboarding = false
+
+[ui.toast]
+delivery = "system"
+
+[keys]
+prefix = "ctrl+a"
+split_vertical = "prefix+|"
