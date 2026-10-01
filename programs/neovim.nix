@@ -30,9 +30,28 @@
 
       enable_spellcheck('gitcommit')
       enable_spellcheck('markdown')
+
+      vim.diagnostic.config({
+        virtual_text = true,
+        signs = true,
+        underline = true,
+        severity_sort = true,
+      })
     '';
     plugins = with pkgs.vimPlugins; [
-      nvim-treesitter.withAllGrammars
+      {
+        plugin = nvim-treesitter.withAllGrammars;
+        type = "lua";
+        config = ''
+          vim.api.nvim_create_autocmd("FileType", {
+            group = vim.api.nvim_create_augroup("TreesitterHighlight", { clear = true }),
+            pattern = "*",
+            callback = function(event)
+              pcall(vim.treesitter.start, event.buf)
+            end,
+          })
+        '';
+      }
       {
         plugin = nvim-autopairs;
         type = "lua";
@@ -53,6 +72,48 @@
         type = "viml";
         config = "colorscheme onedark";
       }
+      {
+        plugin = blink-cmp;
+        type = "lua";
+        config = ''
+          require("blink.cmp").setup({
+            keymap = { preset = "super-tab" },
+            signature = {
+              enabled = true,
+              window = { border = "rounded" },
+              trigger = {
+                 show_on_accept = true,
+               },
+            },
+            completion = {
+              documentation = {
+                auto_show = true,
+                auto_show_delay_ms = 300,
+                window = { border = "rounded" },
+              },
+            },
+            sources = {
+              default = { "lsp", "path", "snippets", "buffer" },
+            },
+          })
+        '';
+      }
+      {
+        plugin = nvim-lspconfig;
+        type = "lua";
+        config = ''
+          vim.lsp.config("ts_ls", {
+            capabilities = require("blink.cmp").get_lsp_capabilities(),
+          })
+
+          vim.lsp.enable({ "ts_ls", "rust_analyzer" })
+        '';
+      }
+    ];
+    extraPackages = with pkgs; [
+      typescript
+      typescript-language-server
+      rust-analyzer
     ];
   };
 }
