@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
     nix-darwin = {
       url = "github:LnL7/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,8 +19,12 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, home-manager, nixos-lima }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, home-manager, nixos-lima, flake-utils }:
+    let
+      supportedSystems = nixpkgs.lib.remove "x86_64-darwin" flake-utils.lib.defaultSystems;
+    in
     {
+
       darwinConfigurations.home = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
@@ -83,6 +88,15 @@
         };
 
       };
-    };
+    } // flake-utils.lib.eachSystem supportedSystems (system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+        unstable = import nixpkgs-unstable { inherit system; };
+      in
+      {
+        packages.tuicr-herdr = pkgs.callPackage ./packages/tuicr-herdr {
+          inherit (unstable) herdr tuicr;
+        };
+      });
 
 }

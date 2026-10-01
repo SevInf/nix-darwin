@@ -1,4 +1,4 @@
-{ pkgs, unstable, lib, ... }:
+{ pkgs, unstable, lib, inputs, ... }:
 {
   users.users.sevinf = {
     group = "sevinf";
@@ -21,6 +21,7 @@
     ghostty.terminfo
     unstable.herdr
     unstable.tuicr
+    inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.tuicr-herdr
     unstable.claude-code
     unstable.pi-coding-agent
   ];
