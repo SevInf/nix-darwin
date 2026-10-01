@@ -6,3 +6,26 @@ delivery = "system"
 [keys]
 prefix = "ctrl+a"
 split_vertical = "prefix+|"
+
+[[keys.command]]
+key = "prefix+g"
+type = "popup"
+command = '''
+GH_PAGER=cat gh pr view --json url --jq .url
+printf '\nPress Enter to close'
+read -r _
+'''
+description = "Show current branch PR link"
+width = "80%"
+height = 7
+
+[[keys.command]]
+key = "prefix+r"
+type = "shell"
+command = '''
+set -eu
+result=$("$HERDR_BIN_PATH" tab create --workspace "$HERDR_ACTIVE_WORKSPACE_ID" --cwd "$HERDR_ACTIVE_PANE_CWD" --label Review --focus)
+pane_id=$(printf '%s' "$result" | jq -er '.result.root_pane.pane_id')
+"$HERDR_BIN_PATH" pane run "$pane_id" 'exec tuicr'
+'''
+description = "Open tuicr in a new tab"

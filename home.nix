@@ -35,6 +35,7 @@ in
       ".codex/AGENTS.md".source = ./files/AGENTS.md;
       ".config/AGENTS.md".source = ./files/AGENTS.md;
       ".config/herdr/config.toml".source = ./files/herdr/config.toml;
+      ".config/tuicr/config.toml".source = ./files/tuicr/config.toml;
       ".pi/agent/AGENTS.md".source = ./files/AGENTS.md;
       ".lima/_templates/dev-sandbox.yaml".source = ./files/lima/templates/dev-sandbox.yaml;
     };
