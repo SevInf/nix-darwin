@@ -7,6 +7,8 @@
     withPython3 = true;
 
     initLua = ''
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
       vim.opt.number = true
       vim.opt.relativenumber = true
       vim.opt.tabstop = 4
@@ -15,6 +17,7 @@
       vim.opt.expandtab = true
       vim.opt.smartindent = true
       vim.opt.clipboard = 'unnamed'
+      vim.opt.termguicolors = true
       local vimrc_group = vim.api.nvim_create_augroup('vimrc', { clear = true })
 
       function enable_spellcheck(file_type)
@@ -39,6 +42,7 @@
       })
     '';
     plugins = with pkgs.vimPlugins; [
+      nvim-web-devicons
       {
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
@@ -113,6 +117,11 @@
         plugin = nvim-tree-lua;
         type = "lua";
         config = "require('nvim-tree').setup()";
+      }
+      {
+        plugin = bufferline-nvim;
+        type = "lua";
+        config = "require('bufferline').setup{}";
       }
     ];
     extraPackages = with pkgs; [
