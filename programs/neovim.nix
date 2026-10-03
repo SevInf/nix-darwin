@@ -4,7 +4,7 @@
   programs.neovim = {
     enable = true;
     withRuby = false;
-    withPython3 = false;
+    withPython3 = true;
 
     initLua = ''
       vim.opt.number = true
@@ -108,6 +108,11 @@
 
           vim.lsp.enable({ "ts_ls", "rust_analyzer" })
         '';
+      }
+      {
+        plugin = nvim-tree-lua;
+        type = "lua";
+        config = "require('nvim-tree').setup()";
       }
     ];
     extraPackages = with pkgs; [
