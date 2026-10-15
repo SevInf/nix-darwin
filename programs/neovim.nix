@@ -123,6 +123,15 @@
         type = "lua";
         config = "require('bufferline').setup{}";
       }
+      {
+        plugin = render-markdown-nvim;
+        type = "lua";
+        config = ''
+        require('render-markdown').setup({
+            enabled = true,
+        })
+        '';
+      }
     ];
     extraPackages = with pkgs; [
       typescript
