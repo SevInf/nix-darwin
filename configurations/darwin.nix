@@ -28,6 +28,12 @@
     nil
   ];
 
+  environment.interactiveShellInit = ''
+    if [ -n "$REX_BIN_DIR" ]; then
+        export PATH="$REX_BIN_DIR:$PATH"
+    fi
+  '';
+
   # The default Nix build user group ID was changed from 30000 to 350.
   # You are currently managing Nix build users with nix-darwin, but your
   # nixbld group has GID 350, whereas we expected 30000.
@@ -49,6 +55,7 @@
       "slack"
       "ghostty"
       "orbstack"
+      "herdr-app"
     ];
 
     masApps = {

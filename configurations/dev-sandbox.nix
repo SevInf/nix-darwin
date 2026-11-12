@@ -6,9 +6,12 @@
     isNormalUser = true;
     home = "/home/sevinf";
     shell = pkgs.zsh;
+    extraGroups = [ "rex" ];
   };
   users.groups.sevinf = { };
   programs.nix-ld.enable = true;
+
+  services.rex.enable = true;
 
   virtualisation.docker.enable = true;
   virtualisation.docker.rootless = {

@@ -16,10 +16,15 @@
     nixos-lima = {
       url = "github:nixos-lima/nixos-lima/master";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
+    };
+    rex = {
+        url = "https://pkgs.superlogical.com/rex/nix/snapshot.tar.gz";
+        inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, home-manager, nixos-lima, flake-utils }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, home-manager, nixos-lima, flake-utils, rex }:
     let
       supportedSystems = nixpkgs.lib.remove "x86_64-darwin" flake-utils.lib.defaultSystems;
     in
@@ -60,6 +65,7 @@
         system = "aarch64-linux";
         modules = [
           nixos-lima.nixosModules.lima
+          rex.nixosModules.default
           ./configurations/common.nix
           ./configurations/dev-sandbox.nix
           home-manager.nixosModules.home-manager
