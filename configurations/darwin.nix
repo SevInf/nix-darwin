@@ -112,4 +112,6 @@
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  home-manager.users.sevinf.imports = [ ../home/darwin.nix ];
+
 }

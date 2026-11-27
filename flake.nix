@@ -41,15 +41,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
 
-              extraSpecialArgs = {
-                gitProfile = {
-                  name = "Serhii Tatarintsev";
-                  email = "sergey@tatarintsev.me";
-                };
-              };
-
-
-              users.sevinf = import ./home.nix;
+              users.sevinf = ./home/common.nix;
             };
           }
         ];
@@ -73,15 +65,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-
-              extraSpecialArgs = {
-                gitProfile = {
-                  name = "Steven McClankerton";
-                  email = "tatarintsev+clanker@prisma.io";
-                };
-              };
-
-              users.sevinf = ./home.nix;
+              users.sevinf = ./home/common.nix;
             };
           }
         ];

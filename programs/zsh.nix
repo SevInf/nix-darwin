@@ -10,6 +10,10 @@
       zstyle ':completion:*' menu select
     '';
     syntaxHighlighting = { enable = true; };
-    historySubstringSearch = { enable = true; };
+    historySubstringSearch = {
+      enable = true;
+      searchUpKey = [ "^[[A" "^[OA" ];
+      searchDownKey = [ "^[[B" "^[OB" ];
+    };
   };
 }

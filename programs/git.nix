@@ -1,13 +1,9 @@
-{ gitProfile, ... }:
+{ ... }:
 
 {
   programs.git = {
     enable = true;
     settings = {
-      user = {
-        name = gitProfile.name;
-        email = gitProfile.email;
-      };
       alias = {
         fpush = "push --force-with-lease";
         amend = "commit -a --amend --no-edit";

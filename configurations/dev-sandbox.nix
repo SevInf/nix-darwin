@@ -54,5 +54,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  home-manager.users.sevinf.imports = [ ../home/sandbox.nix ];
+
   system.stateVersion = "26.05";
 }
